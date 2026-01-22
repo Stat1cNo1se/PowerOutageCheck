@@ -1,0 +1,14 @@
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/bin/Debug/net8.0/PowerOutageCheck
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/bin/Debug/net8.0/PowerOutageCheck.deps.json
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/bin/Debug/net8.0/PowerOutageCheck.runtimeconfig.json
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/bin/Debug/net8.0/PowerOutageCheck.dll
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/bin/Debug/net8.0/PowerOutageCheck.pdb
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.GeneratedMSBuildEditorConfig.editorconfig
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.AssemblyInfoInputs.cache
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.AssemblyInfo.cs
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.csproj.CoreCompileInputs.cache
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.dll
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/refint/PowerOutageCheck.dll
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.pdb
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/PowerOutageCheck.genruntimeconfig.cache
+/home/reinhardt/Documents/Porjects/PowerOutageCheck/obj/Debug/net8.0/ref/PowerOutageCheck.dll
