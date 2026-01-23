@@ -100,21 +100,21 @@ internal class Program
 
     public static bool CheckPower()
     {
-        string acPath = "/sys/class/power_supply/ADP1/online";
+        const string acPath = "/sys/class/power_supply/ADP1/online";
 
         if (!File.Exists(acPath))
         {
             Console.WriteLine("AC status not found");
+            return false;
         }
 
-        bool pluggedIn = File.ReadAllText(acPath).Trim() == "1";
-
-        if (pluggedIn)
+        try
         {
-            return true;
-        } 
-        else
+            return File.ReadAllText(acPath).Trim() == "1";
+        }
+        catch (IOException)
         {
+            Console.WriteLine("Failed to read AC status");
             return false;
         }
     }
