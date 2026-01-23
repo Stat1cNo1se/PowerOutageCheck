@@ -78,12 +78,12 @@ internal class Program
 
             entry.ID = id;
             entry.duration = (float)sw.ElapsedMilliseconds / 1000;
-            entry.timeSpan = $"{startTimeSpan:hh:mm:ss} - {endTimeSpan:hh:mm:ss}";
+            entry.timeSpan = $"{startTimeSpan:hh:mm:ss tt} - {endTimeSpan:hh:mm:ss tt}";
             
             Console.WriteLine("-------------------------------------");
             Console.WriteLine($"ID: {id}");
             Console.WriteLine($"Duration: {(float)sw.ElapsedMilliseconds / 1000}");
-            Console.WriteLine($"Timespan: {startTimeSpan:hh:mm:ss} - {endTimeSpan:hh:mm:ss}");
+            Console.WriteLine($"Timespan: {startTimeSpan:hh:mm:ss tt} - {endTimeSpan:hh:mm:ss tt}");
 
             var values = properties.Select(p => p.GetValue(entry)?.ToString() ?? "");
             sb.AppendLine(string.Join(",", values));

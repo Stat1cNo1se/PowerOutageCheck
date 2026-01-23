@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PowerOutageCheck")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59b024dcb7cfc9402d23f95d16663c393b40ee52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a80948232bb49e6070bc344367d9e0b7b54f629f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PowerOutageCheck")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PowerOutageCheck")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
