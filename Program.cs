@@ -14,6 +14,7 @@ internal class Program
     public static List<Entry> entries = new List<Entry>();
     public static DateTime startTimeSpan;
     public static DateTime endTimeSpan;
+    public static DateTime lastDate = DateTime.Now.Date;
     public static Stopwatch sw = new Stopwatch();
 
     public static string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Entries");
@@ -43,6 +44,12 @@ internal class Program
     {
         Entry entry = new Entry();
         bool connected = CheckPower();
+
+        if (DateTime.Now.Date > lastDate)
+        {
+            id = 0;
+            lastDate = DateTime.Now.Date;
+        }
 
         var sb = new StringBuilder();
         var properties = typeof(Entry).GetProperties();
