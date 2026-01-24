@@ -11,7 +11,6 @@ public class Entry
 
 internal class Program
 {
-    public static List<Entry> entries = new List<Entry>();
     public static DateTime startTimeSpan;
     public static DateTime endTimeSpan;
     public static DateTime lastDate = DateTime.Now.Date;
