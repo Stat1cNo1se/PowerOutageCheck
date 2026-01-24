@@ -106,6 +106,7 @@ internal class Program
 
     public static bool CheckPower()
     {
+        // Path may vary
         const string acPath = "/sys/class/power_supply/ADP1/online";
 
         if (!File.Exists(acPath))
