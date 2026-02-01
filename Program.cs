@@ -44,14 +44,47 @@ internal class Program
         Entry entry = new Entry();
         bool connected = CheckPower();
 
+        if (DateTime.Now.Date > lastDate && markedDown == false)
+        {
+            sw.Stop();
+    
+            endTimeSpan = lastDate.AddDays(1).AddSeconds(-1);
+    
+            entry.ID = id;
+            entry.duration = (float)(endTimeSpan - startTimeSpan).TotalSeconds;
+            entry.timeSpan = $"{startTimeSpan:hh:mm:ss tt} - {endTimeSpan:hh:mm:ss tt}";
+    
+            var sbMidnight = new StringBuilder();
+            var properties = typeof(Entry).GetProperties();
+    
+            string previousFile = Path.Combine(folderPath, $"{lastDate:dd-MM-yyyy}.csv");
+    
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+    
+            if (!File.Exists(previousFile))
+            {
+                using (var createFile = File.Create(previousFile)) { }
+                sbMidnight.AppendLine(string.Join(",", properties.Select(p => p.Name)));
+            }
+    
+            var valuesMidnight = properties.Select(p => p.GetValue(entry)?.ToString() ?? "");
+            sbMidnight.AppendLine(string.Join(",", valuesMidnight));
+            File.AppendAllText(previousFile, sbMidnight.ToString());
+    
+            startTimeSpan = lastDate.AddDays(1);
+            sw.Restart();
+            id = 0;
+            lastDate = DateTime.Now.Date;
+        }
+    
         if (DateTime.Now.Date > lastDate)
         {
-            id = 0;
             lastDate = DateTime.Now.Date;
         }
 
         var sb = new StringBuilder();
-        var properties = typeof(Entry).GetProperties();
+        var propertiesCurrent = typeof(Entry).GetProperties();
 
         filePath = Path.Combine(folderPath, $"{DateTime.Now:dd-MM-yyyy}.csv");
 
@@ -63,7 +96,7 @@ internal class Program
         if (!File.Exists(filePath))
         {
             using (var creatFile = File.Create(filePath)) {};
-            sb.AppendLine(string.Join(",", properties.Select(p => p.Name)));
+            sb.AppendLine(string.Join(",", propertiesCurrent.Select(p => p.Name)));
             File.AppendAllText(filePath, sb.ToString());
         }
 
@@ -76,22 +109,23 @@ internal class Program
             Console.WriteLine("Device on battery");
         }
         
-        if (connected == true && markedDown == false){
+        if (connected == true && markedDown == false)
+        {
             markedDown = true;
             sw.Stop();
 
             endTimeSpan = DateTime.Now;
 
             entry.ID = id;
-            entry.duration = (float)sw.ElapsedMilliseconds / 1000;
+            entry.duration = (float)sw.Elapsed.TotalSeconds;
             entry.timeSpan = $"{startTimeSpan:hh:mm:ss tt} - {endTimeSpan:hh:mm:ss tt}";
-            
+
             Console.WriteLine("-------------------------------------");
             Console.WriteLine($"ID: {id}");
-            Console.WriteLine($"Duration: {(float)sw.ElapsedMilliseconds / 1000}");
-            Console.WriteLine($"Timespan: {startTimeSpan:hh:mm:ss tt} - {endTimeSpan:hh:mm:ss tt}");
+            Console.WriteLine($"Duration: {(float)sw.Elapsed.TotalSeconds}");
+            Console.WriteLine($"Timespan: {entry.timeSpan}");
 
-            var values = properties.Select(p => p.GetValue(entry)?.ToString() ?? "");
+            var values = propertiesCurrent.Select(p => p.GetValue(entry)?.ToString() ?? "");
             sb.AppendLine(string.Join(",", values));
             File.AppendAllText(filePath, sb.ToString());
 
@@ -100,7 +134,6 @@ internal class Program
             id++;
 
             Console.WriteLine("Entry Added");
-            Console.WriteLine("Press any key to exit...");
         }
     }
 
